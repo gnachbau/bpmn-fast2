@@ -34,7 +34,7 @@ function createNewDiagram() {
 
 function openDiagram(xml) {
 
-  bpmnModeler.importXML(xml, function(err) {
+  bpmnModeler.importXML(xml, function (err) {
 
     if (err) {
       container
@@ -60,7 +60,7 @@ function saveSVG(done) {
 
 function saveDiagram(done) {
 
-  bpmnModeler.saveXML({ format: true }, function(err, xml) {
+  bpmnModeler.saveXML({ format: true }, function (err, xml) {
     done(err, xml);
   });
 }
@@ -77,7 +77,7 @@ function registerFileDrop(container, callback) {
 
     var reader = new FileReader();
 
-    reader.onload = function(e) {
+    reader.onload = function (e) {
 
       var xml = e.target.result;
 
@@ -112,9 +112,9 @@ if (!window.FileList || !window.FileReader) {
 
 // bootstrap diagram functions
 
-$(function() {
+$(function () {
 
-  $('#js-create-diagram').click(function(e) {
+  $('#js-create-diagram').click(function (e) {
     e.stopPropagation();
     e.preventDefault();
 
@@ -124,7 +124,7 @@ $(function() {
   var downloadLink = $('#js-download-diagram');
   var downloadSvgLink = $('#js-download-svg');
 
-  $('.buttons a').click(function(e) {
+  $('.buttons a').click(function (e) {
     if (!$(this).is('.active')) {
       e.preventDefault();
       e.stopPropagation();
@@ -144,13 +144,13 @@ $(function() {
     }
   }
 
-  var exportArtifacts = debounce(function() {
+  var exportArtifacts = debounce(function () {
 
-    saveSVG(function(err, svg) {
+    saveSVG(function (err, svg) {
       setEncoded(downloadSvgLink, 'diagram.svg', err ? null : svg);
     });
 
-    saveDiagram(function(err, xml) {
+    saveDiagram(function (err, xml) {
       setEncoded(downloadLink, 'diagram.bpmn', err ? null : xml);
     });
   }, 500);
