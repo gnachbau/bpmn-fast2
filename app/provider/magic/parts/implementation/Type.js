@@ -1,6 +1,6 @@
 'use strict';
 
-var entryFactory = require('../../../../factory/EntryFactory');
+var entryFactory = require('../../../../../node_modules/bpmn-js-properties-panel/lib/factory/EntryFactory');
 
 /**
  * Create an entry to modify the name of an an element.
