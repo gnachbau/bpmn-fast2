@@ -4,6 +4,7 @@ import BpmnModeler from 'bpmn-js/lib/Modeler';
 import propertiesPanelModule from 'bpmn-js-properties-panel';
 import propertiesProviderModule from './provider/magic';
 import magicModdleDescriptor from './descriptors/magic';
+import zeebeModdleDescriptor from './descriptors/zeebe';
 
 import {
   debounce
@@ -24,7 +25,8 @@ var bpmnModeler = new BpmnModeler({
     propertiesProviderModule
   ],
   moddleExtensions: {
-    magic: magicModdleDescriptor
+    magic: magicModdleDescriptor,
+    zeebe: zeebeModdleDescriptor
   }
 });
 

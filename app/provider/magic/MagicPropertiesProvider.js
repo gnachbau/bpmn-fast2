@@ -10,8 +10,11 @@ import linkProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/LinkProp
 import documentationProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/DocumentationProps';
 import idProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/IdProps';
 import nameProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/NameProps';
-import executableProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/ExecutableProps';
-import typeProps from './parts/TypeProps';
+// import executableProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/ExecutableProps';
+// import typeProps from './parts/TypeProps';
+
+import taskDefinition from './parts/TaskDefinitionProps';
+
 
 
 // Require your custom property entries.
@@ -30,8 +33,8 @@ function createGeneralTabGroups(element, bpmnFactory, elementRegistry, translate
   idProps(generalGroup, element, translate);
   nameProps(generalGroup, element, translate);
   processProps(generalGroup, element, translate);
-  typeProps(generalGroup, element, translate);
-  executableProps(generalGroup, element, translate);
+  taskDefinition(generalGroup, element, bpmnFactory);
+  // executableProps(generalGroup, element, translate);
 
   var detailsGroup = {
     id: 'details',
