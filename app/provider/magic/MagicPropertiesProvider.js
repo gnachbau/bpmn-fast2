@@ -10,6 +10,8 @@ import linkProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/LinkProp
 import documentationProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/DocumentationProps';
 import idProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/IdProps';
 import nameProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/NameProps';
+import executableProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/ExecutableProps';
+import typeProps from 'bpmn-js-properties-panel/lib/provider/bpmn/parts/TypeProps';
 
 
 // Require your custom property entries.
@@ -28,6 +30,8 @@ function createGeneralTabGroups(element, bpmnFactory, elementRegistry, translate
   idProps(generalGroup, element, translate);
   nameProps(generalGroup, element, translate);
   processProps(generalGroup, element, translate);
+  typeProps(generalGroup, element, translate);
+  executableProps(generalGroup, element, translate);
 
   var detailsGroup = {
     id: 'details',
@@ -45,7 +49,7 @@ function createGeneralTabGroups(element, bpmnFactory, elementRegistry, translate
 
   documentationProps(documentationGroup, element, bpmnFactory, translate);
 
-  return[
+  return [
     generalGroup,
     detailsGroup,
     documentationGroup
@@ -71,12 +75,12 @@ function createMagicTabGroups(element, elementRegistry) {
 }
 
 export default function MagicPropertiesProvider(
-    eventBus, bpmnFactory, elementRegistry,
-    translate) {
+  eventBus, bpmnFactory, elementRegistry,
+  translate) {
 
   PropertiesActivator.call(this, eventBus);
 
-  this.getTabs = function(element) {
+  this.getTabs = function (element) {
 
     var generalTab = {
       id: 'general',
