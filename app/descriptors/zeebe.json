@@ -1,0 +1,42 @@
+{
+    "name": "zeebe",
+    "prefix": "zeebe",
+    "uri": "http://camunda.org/schema/zeebe/1.0",
+    "xml": {
+        "tagAlias": "lowerCase"
+    },
+    "associations": [],
+    "types": [
+        {
+            "name": "ZeebeServiceTask",
+            "extends": [
+                "bpmn:ServiceTask"
+            ],
+            "properties": [
+                {
+                    "name": "retryCounter",
+                    "type": "String",
+                    "isAttr": true
+                }
+            ]
+        },
+        {
+            "name": "TaskDefinition",
+            "superClass": [
+                "Element"
+            ],
+            "properties": [
+                {
+                    "name": "type",
+                    "type": "string",
+                    "isAttr": true
+                },
+                {
+                    "name": "retries",
+                    "type": "string",
+                    "isAttr": true
+                }
+            ]
+        }
+    ]
+}
