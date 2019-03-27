@@ -16,7 +16,7 @@ import entryFactory from 'bpmn-js-properties-panel/lib/factory/EntryFactory';
 
 import extensionElementsHelper from 'bpmn-js-properties-panel/lib/helper/ExtensionElementsHelper';
 
-var selectValues = require('../../../descriptors/test.json');
+var selectValues = require('../../../descriptors/DropdownValues.json');
 
 export default function (group, element, bpmnFactory) {
 
@@ -34,11 +34,13 @@ export default function (group, element, bpmnFactory) {
         return (getElements(bo, 'zeebe:TaskDefinition') || [])[0];
     }
 
-    group.entries.push(entryFactory.selectBox({
+    //validationAwareTextField
+    group.entries.push(entryFactory.selectBox({ //
         id: 'taskDefinitionType',
-        selectOptions: selectValues,
         label: 'Type',
+        selectOptions: selectValues,
         modelProperty: 'type',
+        emptyParameter: false,
 
         getProperty: function (element, node) {
             return (getTaskDefinition(element, node) || {}).type;
