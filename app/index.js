@@ -30,6 +30,9 @@ var bpmnModeler = new BpmnModeler({
   }
 });
 
+// enable hotkeys (Ctrl+C, Ctrl+V, Del, Ctrl+Z, Ctrl+Maj+Z, ...)
+bpmnModeler.get('keyboard').bind(document);
+
 function createNewDiagram() {
   openDiagram(diagramXML);
 }
